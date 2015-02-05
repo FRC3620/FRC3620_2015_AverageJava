@@ -9,17 +9,17 @@
 // it from being updated in the future.
 
 
-package org.usfirst.frc3620.FRC3620_2015_AverageJava.commands;
+package org.usfirst.frc3620.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc3620.FRC3620_2015_AverageJava.Robot;
+import org.usfirst.frc3620.Robot;
 
 /**
  *
  */
-public class  AutonomousCommand extends Command {
+public class  toggleTeleOpAssist extends Command {
 
-    public AutonomousCommand() {
+    public toggleTeleOpAssist() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 

@@ -12,7 +12,7 @@
 hs_err_pid*
 
 # backup files
-*.java~
+*~
 /bin/
 /build/
 /dist/

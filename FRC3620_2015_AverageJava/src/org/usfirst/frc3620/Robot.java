@@ -133,20 +133,21 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during test mode
      */
     public void testPeriodic() {
-    	allPeriodic();
         LiveWindow.run();
+    	allPeriodic();
     }
-     public void allPeriodic() 
-     {
-    	 drive.getGyroAngle();
-    	 SmartDashboard.putNumber("GyroAngle", drive.gyroAngle);
-    	 encoderSubsystem.getLeftEncoder();
-         SmartDashboard.putNumber("Left encoder. Inches traveled.", encoderSubsystem.leftEncoderValue);
-         encoderSubsystem.getRightEncoder();
-         SmartDashboard.putNumber("Right encoder. Inches traveled.", encoderSubsystem.leftEncoderValue);
-         SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
+    
+    public void allPeriodic() 
+    {
+    	drive.getGyroAngle();
+    	SmartDashboard.putNumber("GyroAngle", drive.gyroAngle);
+    	encoderSubsystem.getLeftEncoder();
+        SmartDashboard.putNumber("Left encoder. Inches traveled.", encoderSubsystem.leftEncoderValue);
+        encoderSubsystem.getRightEncoder();
+        SmartDashboard.putNumber("Right encoder. Inches traveled.", encoderSubsystem.leftEncoderValue);
+        SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
     	if (Robot.pneumatics.havePneumatics){
     		System.out.println (String.format("switch=%s, couurent=%f", RobotMap.pneumaticsCompressor1.getPressureSwitchValue(), RobotMap.pneumaticsCompressor1.getCompressorCurrent()));
-     }
+        }
     }
 }

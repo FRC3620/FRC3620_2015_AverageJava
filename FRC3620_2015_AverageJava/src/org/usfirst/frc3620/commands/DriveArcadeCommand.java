@@ -12,6 +12,7 @@
 package org.usfirst.frc3620.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc3620.Robot;
 
 /**
@@ -35,6 +36,7 @@ public class  DriveArcadeCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.drive.arcadeDrive(Robot.oi.joystick1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

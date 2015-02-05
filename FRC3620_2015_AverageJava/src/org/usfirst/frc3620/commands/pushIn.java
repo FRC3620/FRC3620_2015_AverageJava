@@ -12,6 +12,7 @@
 package org.usfirst.frc3620.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
 import org.usfirst.frc3620.Robot;
 
 /**

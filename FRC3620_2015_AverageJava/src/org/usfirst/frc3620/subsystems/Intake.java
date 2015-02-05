@@ -11,10 +11,11 @@
 
 package org.usfirst.frc3620.subsystems;
 
+import org.usfirst.frc3620.Robot;
 import org.usfirst.frc3620.RobotMap;
 import org.usfirst.frc3620.commands.*;
-import edu.wpi.first.wpilibj.*;
 
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -40,6 +41,21 @@ public class Intake extends Subsystem {
 	
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+    public void takeIn()
+    {
+    	intakeMotor1.set(-1);
+    	intakeMotor2.set(1);
+    }
+    public void dumpOut()
+    {
+    	intakeMotor2.set(-1);
+    	intakeMotor1.set(1);
+    }
+    public void intakeStop()
+    {
+    	intakeMotor1.set(0);
+    	intakeMotor2.set(0);
     }
 }
 

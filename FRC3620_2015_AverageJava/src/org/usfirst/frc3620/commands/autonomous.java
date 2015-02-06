@@ -18,7 +18,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class autonomous extends CommandGroup {
     
     public  autonomous() {
-    	addSequential(new AutonomousMove());
+    	//addSequential(new AutonomousMove());
+    	addSequential(new AutonomousToteFinder());
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

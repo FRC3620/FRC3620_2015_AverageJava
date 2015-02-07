@@ -26,7 +26,7 @@ import org.usfirst.frc3620.VisionData;
  */
 public class  AutonomousToteFinder extends Command implements PIDSource, PIDOutput {
 
-	 double p = .075;
+	 double p = 1.0;
      double i = 0;
      double d = 0;
      double sideStick;
@@ -55,7 +55,7 @@ public class  AutonomousToteFinder extends Command implements PIDSource, PIDOutp
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.setDrive(.50, sideStick);
+    	Robot.drive.setDrive(0, sideStick);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -78,7 +78,7 @@ public class  AutonomousToteFinder extends Command implements PIDSource, PIDOutp
     public void pidWrite(double output)
 	{
 		// TODO Auto-generated method stub
-    	sideStick = -output; 
+    	sideStick = output; 
     	SmartDashboard.putNumber("sidestick: ", sideStick);
 	}
 
@@ -86,7 +86,8 @@ public class  AutonomousToteFinder extends Command implements PIDSource, PIDOutp
 	public double pidGet()
 	{
 		// TODO Auto-generated method stub
-		double target = 2*( UDPReciever.visionData.getX()/UDPReciever.visionData.getImageWidth())-1;
+		//double target = 2*( UDPReciever.visionData.getX()/UDPReciever.visionData.getImageWidth())-1;
+		double target = -0.5;
 		SmartDashboard.putNumber("Target", target);
 		return target;
 	}

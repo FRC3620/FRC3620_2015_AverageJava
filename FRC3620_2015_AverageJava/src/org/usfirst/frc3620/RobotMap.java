@@ -61,9 +61,9 @@ public class RobotMap {
         liftPIDliftLimitBottom = new DigitalInput(1);
         LiveWindow.addSensor("LiftPID", "liftLimitBottom", liftPIDliftLimitBottom);
         
-        liftPIDLiftEncoder = new Encoder(6, 7, false, EncodingType.k4X);
+        liftPIDLiftEncoder = new Encoder(6, 7, false, EncodingType.k1X);
         LiveWindow.addSensor("LiftPID", "LiftEncoder", liftPIDLiftEncoder);
-        liftPIDLiftEncoder.setDistancePerPulse(0.03515625);
+        liftPIDLiftEncoder.setDistancePerPulse(0.00988);
         liftPIDLiftEncoder.setPIDSourceParameter(PIDSourceParameter.kDistance);
         driveSpeedController2 = new Talon(2);
         LiveWindow.addActuator("Drive", "Speed Controller 2", (Talon) driveSpeedController2);

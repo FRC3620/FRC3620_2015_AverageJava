@@ -29,4 +29,9 @@ public class VisionData {
 		public double getX() {
 			return x;
 		}
+		
+		public boolean isSeen()
+		{
+			return seen;
+		}
 	}

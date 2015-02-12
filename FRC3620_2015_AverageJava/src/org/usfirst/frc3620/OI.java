@@ -81,9 +81,9 @@ public class OI {
         takeInButton.whileHeld(new takeIn());
         pneumaticsbutton = new JoystickButton(joystick1, 1);
         pneumaticsbutton.whenPressed(new intakeOpenClose());
-        liftDownButton = new JoystickButton(joystick1, 5);
+        liftDownButton = new JoystickButton(joystick1, 1);
         liftDownButton.whenPressed(new liftDown());
-        liftUpButton = new JoystickButton(joystick1, 6);
+        liftUpButton = new JoystickButton(joystick1, 4);
         liftUpButton.whenPressed(new liftUp());
 
 	    

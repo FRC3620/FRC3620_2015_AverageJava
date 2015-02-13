@@ -204,7 +204,8 @@ public class Robot extends IterativeRobot {
 		double liftPosition = liftPID.liftEncoderValue();
 		double setPoint = liftPID.getPIDController().getSetpoint();
 		double motorPower = RobotMap.liftPIDliftMotor.get();
-		System.out.printf("setpoint = %f, position = %f, pwoer = %f\n", setPoint, liftPosition, motorPower);
+		//System.out.printf("setpoint = %f, position = %f, pwoer = %f\n", setPoint, liftPosition, motorPower);
+		//System.out.println("condition: " + Robot.liftPID.getCondition());
 		
 	}
 }

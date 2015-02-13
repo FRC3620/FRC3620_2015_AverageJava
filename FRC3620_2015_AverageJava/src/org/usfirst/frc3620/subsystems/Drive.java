@@ -192,7 +192,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     int n = 0;
     public boolean isTurning()
     {
-    	if (Robot.oi.joystick1.getRawAxis(4) < .2 && Robot.oi.joystick1.getRawAxis(4) > -.2)
+    	if (Robot.oi.driverJoystick.getRawAxis(4) < .2 && Robot.oi.driverJoystick.getRawAxis(4) > -.2)
         {
     		if (n == 0)
     		{

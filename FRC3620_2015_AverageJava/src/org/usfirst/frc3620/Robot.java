@@ -200,5 +200,11 @@ public class Robot extends IterativeRobot {
 					RobotMap.pneumaticsCompressor1.getPressureSwitchValue(),
 					RobotMap.pneumaticsCompressor1.getCompressorCurrent()));
 		}
+		
+		double liftPosition = liftPID.liftEncoderValue();
+		double setPoint = liftPID.getPIDController().getSetpoint();
+		double motorPower = RobotMap.liftPIDliftMotor.get();
+		System.out.printf("setpoint = %f, position = %f, pwoer = %f\n", setPoint, liftPosition, motorPower);
+		
 	}
 }

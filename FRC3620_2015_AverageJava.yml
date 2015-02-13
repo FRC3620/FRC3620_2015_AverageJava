@@ -81,7 +81,7 @@ Children:
       Name: LiftEncoder
     Properties:
       Limit Output: !!robotbuilder.data.properties.BooleanProperty {default: false,
-        name: Limit Output, validators: null, value: false}
+        name: Limit Output, validators: null, value: true}
       D: !!robotbuilder.data.properties.DoubleProperty {default: 0, name: D, validators: null,
         value: 0.0}
       Continuous: !!robotbuilder.data.properties.BooleanProperty {default: false,

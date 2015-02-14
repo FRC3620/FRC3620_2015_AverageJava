@@ -132,7 +132,7 @@ public class pneumatics extends Subsystem {
 					System.out.println("MAC: "+sb);
 					if (macString.equals("00-80-2F-17-EB-09")
 							|| macString.equals("00-80-2F-17-EB-08")) {
-						havePneumatics = false;
+						havePneumatics = true;
 						break;
 					}
 				}

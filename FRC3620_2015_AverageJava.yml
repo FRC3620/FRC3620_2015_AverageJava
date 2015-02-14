@@ -204,9 +204,9 @@ Children:
         Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1,
           name: Maximum Output, validators: null, value: 1.0}
         Left Front Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
-          default: false, name: Left Front Motor Inverted, validators: null, value: true}
+          default: false, name: Left Front Motor Inverted, validators: null, value: false}
         Right Front Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
-          default: false, name: Right Front Motor Inverted, validators: null, value: true}
+          default: false, name: Right Front Motor Inverted, validators: null, value: false}
         Left Rear Motor: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 1
           name: Left Rear Motor
@@ -214,11 +214,11 @@ Children:
           validators: [RobotDrive4, ChildDropdownSelected]
           value: Drive Speed Controller 2
         Right Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
-          default: false, name: Right Rear Motor Inverted, validators: null, value: true}
+          default: false, name: Right Rear Motor Inverted, validators: null, value: false}
         Safety Expiration Time: !!robotbuilder.data.properties.DoubleProperty {default: 0.1,
           name: Safety Expiration Time, validators: null, value: 0.1}
         Left Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
-          default: false, name: Left Rear Motor Inverted, validators: null, value: true}
+          default: false, name: Left Rear Motor Inverted, validators: null, value: false}
         Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,
           name: Safety Enabled, validators: null, value: true}
         Left Front Motor: !!robotbuilder.data.properties.ChildSelectionProperty
@@ -827,7 +827,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Developer\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\roboadmin\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: .\}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}

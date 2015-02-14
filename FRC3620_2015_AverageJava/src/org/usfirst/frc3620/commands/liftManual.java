@@ -37,28 +37,7 @@ public class  liftManual extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double speed = Robot.oi.operatorJoystick.getRawAxis(5);
-    	if (Robot.liftPID.limitTop() == false && Robot.liftPID.limitBottom() == false)
-    	{
-    		System.out.println("1");
-    		Robot.liftPID.setMotor(speed);
-    	}
-    	else if (Robot.liftPID.limitBottom() && speed < 0)
-    	{
-    		System.out.println("2");
-    		Robot.liftPID.setMotor(speed);
-    	}
-    	else if (Robot.liftPID.limitTop() && speed > 0)
-    	{
-    		System.out.println("3");
-    		Robot.liftPID.setMotor(speed);
-    	}
-    	else
-    	{
-    		System.out.println("Cannot move! Against limit switch!");
-    	}
-    	System.out.println("Limit Top: " + Robot.liftPID.limitTop());
-    	System.out.println("Limit Bottom: " + Robot.liftPID.limitBottom());
+    	Robot.liftPID.manualOverride();
     }
 
     // Make this return true when this Command no longer needs to run execute()

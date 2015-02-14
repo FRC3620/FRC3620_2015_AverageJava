@@ -32,7 +32,7 @@ public class  BasiloidTilt extends Command {
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	System.out.println("Basiloid state " + Robot.pneumatics.basiloidState);
+    	System.out.println("Basiloid state " + Robot.pneumatics.basiloidIn);
     }
 
     // Called repeatedly when this Command is scheduled to run

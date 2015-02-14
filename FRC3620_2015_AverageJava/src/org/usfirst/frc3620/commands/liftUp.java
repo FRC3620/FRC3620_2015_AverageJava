@@ -33,16 +33,8 @@ public class  liftUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	//System.out.println("lift up start \n liftPot: " + Robot.lift.getLiftPot());
-    	if(Robot.liftPID.limitTop() != true)
-    	{
     		System.out.println("lift up start");
     		Robot.liftPID.liftUp();
-    	}
-    	else
-    	{
-    		Robot.liftPID.disable();
-    		System.out.println("Cannot move up! Already at top!");
-    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

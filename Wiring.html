@@ -22,10 +22,58 @@
   </head>
   <body>
     <h1>Wiring</h1>
-                        
+                    <h2>DIO</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Sensor</th></tr>
+	                  	    <tr><td>0</td><td>LiftPID liftLimitTop</td></tr>
+	            	    <tr><td>1</td><td>LiftPID liftLimitBottom</td></tr>
+	            	    <tr><td>2</td><td>encoderSubsystem leftEncoder</td></tr>
+	            	    <tr><td>3</td><td>encoderSubsystem leftEncoder</td></tr>
+	            	    <tr><td>4</td><td>encoderSubsystem rightEncoder</td></tr>
+	            	    <tr><td>5</td><td>encoderSubsystem rightEncoder</td></tr>
+	            	    <tr><td>6</td><td>LiftPID LiftEncoder</td></tr>
+	            	    <tr><td>7</td><td>LiftPID LiftEncoder</td></tr>
+	                                                                                                                                                                                                                             	    </table>
+                        <h2>PWMs</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Motor</th></tr>
+	                  	    <tr><td>0</td><td>Drive Speed Controller 0</td></tr>
+	            	    <tr><td>1</td><td>Drive Speed Controller 1</td></tr>
+	            	    <tr><td>2</td><td>Drive Speed Controller 2</td></tr>
+	            	    <tr><td>3</td><td>Drive Speed Controller 3</td></tr>
+	            	    <tr><td>4</td><td>LiftPID liftMotor</td></tr>
+	            	    <tr><td>5</td><td>Intake IntakeMotor2</td></tr>
+	            	    <tr><td>6</td><td>Intake IntakeMotor1</td></tr>
+	                                                                                                                                                                                                                                         	    </table>
+    
             
             
-                
-                                                                                                                                                                                                                                                            
-          </body>
+                    <h2>Analog Inputs</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Sensor</th></tr>
+	                  	    <tr><td>0</td><td>Drive driveGyro</td></tr>
+	                                                                                                                                                                                                                                                                                                                 	    </table>
+        
+                    <h2>PCM 0</h2>
+	    <table><tr>
+	        <th class="pound">#</th>
+	        <th>Solenoid</th></tr>
+	                  	    <tr><td>0</td><td>pneumatics valve 1_1 Output </td></tr>
+	            	    <tr><td>1</td><td>pneumatics valve 1_2 Output </td></tr>
+	            	    <tr><td>2</td><td>pneumatics valve 2_1 Output </td></tr>
+	            	    <tr><td>3</td><td>pneumatics valve 2_2 Output </td></tr>
+	            	    <tr><td>4</td><td>pneumatics valve 3_1 Output </td></tr>
+	            	    <tr><td>5</td><td>pneumatics valve 3_2 Output </td></tr>
+	                                                                                                                                                                                                                                                     	    </table>
+                                                                                                                                                                                                                                                    
+                <h2>Compressor</h2>
+	<table><tr>
+	<th class="pound">PCM</th>
+	<th>Device</th></tr>
+	            	    <tr><td>0</td><td>pneumatics Compressor 1</td></tr>
+	                                                                                                                                                                                                                                                                                                                 	</table>
+      </body>
 </html>

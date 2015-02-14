@@ -17,3 +17,4 @@ hs_err_pid*
 /build/
 /dist/
 /AverageJava.zip
+/sysProps.xml

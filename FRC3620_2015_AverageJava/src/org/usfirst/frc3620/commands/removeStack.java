@@ -36,6 +36,7 @@ public class  removeStack extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	System.out.println("Remove stack start");
     	Robot.liftPID.removeStack();
     }
 

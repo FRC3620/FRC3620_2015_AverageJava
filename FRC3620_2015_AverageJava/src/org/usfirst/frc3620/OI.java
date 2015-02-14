@@ -72,7 +72,7 @@ public class OI {
         
         removeStackButton = new JoystickButton(operatorJoystick, 7);
         removeStackButton.whenPressed(new removeStack());
-        tiltButton = new JoystickButton(operatorJoystick, 4);
+        tiltButton = new JoystickButton(operatorJoystick, 5);
         tiltButton.whenPressed(new BasiloidTilt());
         dumpOutButton = new JoystickButton(operatorJoystick, 3);
         dumpOutButton.whileHeld(new dumpOut());
@@ -80,7 +80,7 @@ public class OI {
         takeInButton.whileHeld(new takeIn());
         liftDownButton = new JoystickButton(operatorJoystick, 1);
         liftDownButton.whenPressed(new liftDown());
-        pneumaticsbutton = new JoystickButton(operatorJoystick, 1);
+        pneumaticsbutton = new JoystickButton(operatorJoystick, 9);
         pneumaticsbutton.whenPressed(new intakeOpenClose());
         liftUpButton = new JoystickButton(operatorJoystick, 4);
         liftUpButton.whenPressed(new liftUp());

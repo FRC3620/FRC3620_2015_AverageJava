@@ -194,6 +194,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Right encoder. Inches traveled.",
 				encoderSubsystem.leftEncoderValue);
 		SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
+		SmartDashboard.putNumber("Setpoint for lift: ", Robot.liftPID.getSetpoint());
 		if (Robot.pneumatics.havePneumatics)
 		{
 			System.out.println(String.format("switch=%s, couurent=%f",

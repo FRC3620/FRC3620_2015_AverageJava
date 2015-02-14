@@ -41,7 +41,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     double sideStick = 0;
     long timeStart;
     long time2;
-    public boolean assistEnabled = true;
+    public boolean assistEnabled = false;
     
     PIDController teleOpDriveAssist = new PIDController(pT, iT, dT, this, this);
     // Put methods for controlling this subsystem

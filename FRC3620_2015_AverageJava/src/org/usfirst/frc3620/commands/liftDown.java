@@ -32,10 +32,17 @@ public class  liftDown extends Command {
 
     // Called just before this Command runs the first time
     
-    public double endPointDown;
     protected void initialize() {
-    	System.out.println("liftDownStart");
-    	Robot.liftPID.liftDown();
+    	if (Robot.liftPID.limitBottom() != true)
+    	{
+    		System.out.println("liftDownStart");
+    		Robot.liftPID.liftDown();
+    	}
+    	else 
+    	{
+    		Robot.liftPID.disable();
+    		System.out.println("Cannot move down! Already at bottom!");
+    	}
     	//System.out.println("lift down start \n liftPot: " + Robot.lift.getLiftPot());
     }
 

@@ -107,7 +107,7 @@ Children:
         validators: [ChildDropdownSelected]
         value: LiftPID LiftEncoder
       Maximum Output: !!robotbuilder.data.properties.DoubleProperty {default: 1, name: Maximum Output,
-        validators: null, value: 0.5}
+        validators: null, value: 0.3}
       Output: !!robotbuilder.data.properties.ChildSelectionProperty
         default: 0
         name: Output

@@ -251,6 +251,8 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
 		SmartDashboard.putNumber("Setpoint for lift: ", Robot.liftPID.getSetpoint());
 		SmartDashboard.putNumber("DriveEncoder: ", Robot.encoderSubsystem.getRightEncoder());
+		SmartDashboard.putBoolean("limit top", Robot.liftPID.limitTop());
+		SmartDashboard.putBoolean("limit Bottom", Robot.liftPID.limitBottom());
 		if (Robot.pneumatics.havePneumatics)
 		{
 			//System.out.println(String.format("switch=%s, couurent=%f",

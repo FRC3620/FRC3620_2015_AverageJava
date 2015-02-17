@@ -253,7 +253,7 @@ public class LiftPID extends PIDSubsystem {
     public void manualOverride()
     {
     	double speed = Robot.oi.operatorJoystick.getRawAxis(5);
-    	if (limitSwitchOk(speed))
+    	if (limitSwitchOk(speed) && speed < -0.2 || speed > 0.2)
     	{
     		liftMotor.set(speed);
     	}

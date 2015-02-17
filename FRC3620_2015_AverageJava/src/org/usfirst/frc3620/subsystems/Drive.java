@@ -138,6 +138,8 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     	robotDrive4.arcadeDrive(1, 0);
     	
     }
+
+
     public void turnMotorsOff()
     {
     	robotDrive4.arcadeDrive(0, 0);
@@ -226,6 +228,11 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 	public long logTime()
 	{
 		return System.currentTimeMillis();
+	}
+	public void resetEncoders()
+	{
+		Robot.encoderSubsystem.rightEncoder.reset();
+		Robot.encoderSubsystem.leftEncoder.reset();
 	}
 }
 

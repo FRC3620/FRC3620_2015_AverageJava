@@ -10,16 +10,42 @@
 
 
 package org.usfirst.frc3620.commands;
+import org.usfirst.frc3620.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ Order of autonomous
+ 1. Squeeze
+ 2. Up
+ 3. Forward
+ 4. Down (Just a little)
+ 5. Release
+ 6. Down
+ 7. Squeeze
+ 8. Up
+ 9. Turn 90 degrees right
+ 10. Forward
+ 11. Drop
+ 12. Release
  */
 public class autonomous extends CommandGroup {
     
     public  autonomous() {
-    	//addSequential(new AutonomousMove());
-    	addSequential(new AutonomousToteFinder());
+    	addSequential(new intakeClose());  //Squeeze
+    	addSequential(new autoLiftTo(12)); //Up
+    	addSequential(new AutoMove(1.5)); //Forward
+    	addSequential(new autoLiftTo(8));  //down just a little
+    	addSequential(new intakeOpen());  //release
+    	addSequential(new autoLiftTo(0)); //down
+    	addSequential(new intakeClose()); //squeeze
+    	addSequential(new autoLiftTo(2.5)); //up
+    	addSequential(new AutonomousTurn()); //Turn 90 degrees right
+    	addSequential(new AutoMove(10)); //forward
+    	addSequential(new autoLiftTo(0)); //drop
+    	addSequential(new intakeOpen()); //release
+    	
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

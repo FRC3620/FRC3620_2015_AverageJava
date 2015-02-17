@@ -31,17 +31,18 @@ public class  AutonomousTurn extends Command {
  
     // Called just before this Command runs the first time
     protected void initialize() {
-
+    	Robot.drive.gyroReset();
+    	System.out.println("autoTurn Start");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.setDrive(0, .4);
+    	Robot.drive.setDrive(0, .6);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (Robot.drive.getGyroAngle() >= 90)
+        if (Robot.drive.getGyroAngle() >= 90 || Robot.drive.getGyroAngle() <= -90)
         {
         	return true;
         }

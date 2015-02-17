@@ -32,24 +32,19 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class autonomous extends CommandGroup {
     
     public  autonomous() {
-    	//addSequential(new AutonomousMove());
     	addSequential(new intakeClose());  //Squeeze
     	addSequential(new autoLiftTo(12)); //Up
-    	addSequential(new AutoMove(2)); //Forward
-    	addSequential(new ResetDriveEncoders());  //reset encoders
+    	addSequential(new AutoMove(1.5)); //Forward
     	addSequential(new autoLiftTo(8));  //down just a little
     	addSequential(new intakeOpen());  //release
     	addSequential(new autoLiftTo(0)); //down
     	addSequential(new intakeClose()); //squeeze
     	addSequential(new autoLiftTo(2.5)); //up
-    	addSequential(new resetGyro()); //reset gyro before turning
     	addSequential(new AutonomousTurn()); //Turn 90 degrees right
-    	addSequential(new ResetDriveEncoders()); //reset encoders
     	addSequential(new AutoMove(10)); //forward
     	addSequential(new autoLiftTo(0)); //drop
     	addSequential(new intakeOpen()); //release
-    	addSequential(new ResetDriveEncoders()); //reset encoders before the beginning of TeleOp.
-    	addSequential(new resetGyro()); //reset gyro before beginning of TeleOp.
+    	
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

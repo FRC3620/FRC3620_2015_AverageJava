@@ -220,7 +220,7 @@ Children:
         Left Rear Motor Inverted: !!robotbuilder.data.properties.BooleanProperty {
           default: false, name: Left Rear Motor Inverted, validators: null, value: false}
         Safety Enabled: !!robotbuilder.data.properties.BooleanProperty {default: true,
-          name: Safety Enabled, validators: null, value: true}
+          name: Safety Enabled, validators: null, value: false}
         Left Front Motor: !!robotbuilder.data.properties.ChildSelectionProperty
           default: 0
           name: Left Front Motor
@@ -440,7 +440,7 @@ Children:
           validators: *id011
           value: '4'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 0.09817477042468103}
+          name: Distance Per Pulse, validators: null, value: 0.00409061543436171}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id012
           default: kRate
@@ -828,7 +828,7 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: LiftPID}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: autoLiftTo
   - Children: []
@@ -836,7 +836,7 @@ Children:
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
         name: Requires, type: Subsystem, validators: null, value: Drive}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: AutoMove
   - Children: []
@@ -883,7 +883,7 @@ Children:
   Base: Commands
   Name: Commands
 Properties:
-  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\Developer\workspace',
+  Eclipse Workspace: !!robotbuilder.data.properties.FileProperty {default: 'C:\Users\roboadmin\workspace',
     extension: null, folder: true, name: Eclipse Workspace, validators: null, value: .\}
   Export Commands: !!robotbuilder.data.properties.BooleanProperty {default: true,
     name: Export Commands, validators: null, value: true}

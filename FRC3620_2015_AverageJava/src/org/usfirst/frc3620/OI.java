@@ -125,10 +125,6 @@ public class OI {
 
         SmartDashboard.putData("AutonomousToteFinder", new AutonomousToteFinder());
 
-        SmartDashboard.putData("autoLiftTo", new autoLiftTo(5));
-
-        SmartDashboard.putData("AutoMove", new AutoMove(5));
-
         SmartDashboard.putData("ResetDriveEncoders", new ResetDriveEncoders());
 
         SmartDashboard.putData("AutonomousTurn", new AutonomousTurn());

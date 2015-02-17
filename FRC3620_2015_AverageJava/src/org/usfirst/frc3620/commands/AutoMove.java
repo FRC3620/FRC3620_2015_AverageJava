@@ -32,7 +32,8 @@ public class  AutoMove extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.encoderSubsystem.resetEncoders();
+    	System.out.println("autoMove start");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -44,6 +45,8 @@ public class  AutoMove extends Command {
     protected boolean isFinished() {
     	if (Robot.encoderSubsystem.getRightEncoder() >= howFar)
     	{
+    		Robot.drive.turnMotorsOff();
+    		System.out.println("AutoMove End");
     		return true;
     	}
     	else

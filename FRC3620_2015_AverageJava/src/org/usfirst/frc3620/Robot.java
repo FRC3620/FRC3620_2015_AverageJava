@@ -195,12 +195,12 @@ public class Robot extends IterativeRobot {
 				encoderSubsystem.leftEncoderValue);
 		SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
 		SmartDashboard.putNumber("Setpoint for lift: ", Robot.liftPID.getSetpoint());
-		SmartDashboard.putNumber("DriveEncoder: ", Robot.encoderSubsystem.rightEncoderValue);
+		SmartDashboard.putNumber("DriveEncoder: ", Robot.encoderSubsystem.getRightEncoder());
 		if (Robot.pneumatics.havePneumatics)
 		{
-			System.out.println(String.format("switch=%s, couurent=%f",
-					RobotMap.pneumaticsCompressor1.getPressureSwitchValue(),
-					RobotMap.pneumaticsCompressor1.getCompressorCurrent()));
+			//System.out.println(String.format("switch=%s, couurent=%f",
+					//RobotMap.pneumaticsCompressor1.getPressureSwitchValue(),
+					//RobotMap.pneumaticsCompressor1.getCompressorCurrent()));
 		}
 		
 		double liftPosition = liftPID.liftEncoderValue();

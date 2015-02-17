@@ -72,6 +72,24 @@ public class pneumatics extends Subsystem {
 		
 	}
 	
+	public void intakeOpen()
+	{
+		valveArm1_1.set(false);
+		//valveArm1_2.set(true);
+		valveArm2_2.set(true);
+		// valveArm2_1.set(false);
+		intakeOpen = true;
+	}
+	
+	public void intakeClose()
+	{
+		valveArm1_1.set(true);
+		//valveArm1_2.set(false);
+		valveArm2_2.set(false);
+		// valveArm2_1.set(true);
+		intakeOpen = false;
+	}
+	
 	public void openAndClose()
 	{
 		if(intakeOpen == true)

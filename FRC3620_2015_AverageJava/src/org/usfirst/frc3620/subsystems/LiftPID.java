@@ -124,7 +124,7 @@ public class LiftPID extends PIDSubsystem {
     	positionToX(top);
     	getCondition();
     }
-    void positionToX (double x) {
+    public void positionToX (double x) {
     	enable();
     	setSetpoint(x);
     	getCondition();
@@ -262,14 +262,13 @@ public class LiftPID extends PIDSubsystem {
     public void manualOverride()
     {
     	double speed = Robot.oi.operatorJoystick.getRawAxis(5);
-    	if (isOkToMoveLift(speed))
+    	if (isOkToMoveLift(speed) && speed > 0.2 || speed < -0.2)
     	{
     		liftMotor.set(speed);
     	}
     	else
     	{
     		liftMotor.set(0);
-    		System.out.println("Limit switches are not okay. Manual");
     	}
     }
     public boolean limitBottom()
@@ -301,6 +300,8 @@ public class LiftPID extends PIDSubsystem {
     		return true;
     	}
     }
+    
+    
     public double getManual()
     {
     	if (Robot.oi != null && Robot.oi.operatorJoystick != null)

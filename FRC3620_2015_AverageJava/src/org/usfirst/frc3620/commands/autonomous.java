@@ -13,6 +13,7 @@ package org.usfirst.frc3620.commands;
 import org.usfirst.frc3620.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
 /**
  Order of autonomous
@@ -33,17 +34,23 @@ public class autonomous extends CommandGroup {
     
     public  autonomous() {
     	addSequential(new intakeClose());  //Squeeze
-    	addSequential(new autoLiftTo(12)); //Up
-    	addSequential(new AutoMove(1.5)); //Forward
-    	addSequential(new autoLiftTo(8));  //down just a little
-    	addSequential(new intakeOpen());  //release
-    	addSequential(new autoLiftTo(0)); //down
-    	addSequential(new intakeClose()); //squeeze
-    	addSequential(new autoLiftTo(2.5)); //up
-    	addSequential(new AutonomousTurn()); //Turn 90 degrees right
-    	addSequential(new AutoMove(10)); //forward
-    	addSequential(new autoLiftTo(0)); //drop
+    	addSequential(new WaitCommand(.5));
+    	addSequential(new autoLiftTo(15)); //Up
+    	addSequential(new AutoMove(1.4, 0.6)); //Forward
+    	addSequential(new AutoLiftToNoWait(8));  //down just a little
+    	addSequential(new WaitCommand(.5));
+    	//addSequential(new intakeOpen());  //release
+    	//addSequential(new autoLiftTo(0));
+    	//addSequential(new intakeClose()); //squeeze
+    	//addSequential(new autoLiftTo(2.5)); //up
+    	addSequential(new AutonomousTurn(-75)); //Turn 90 degrees right
+    	addSequential(new AutoMove(10, 1)); //forward
+    	//addSequential(new autoLiftTo(0)); //drop
+    	addSequential(new AutonomousTurn(75));
+    	addSequential(new WaitCommand(.5));
     	addSequential(new intakeOpen()); //release
+    	addSequential(new autoLiftTo(10));
+    	addSequential(new AutoMove(-.5, 1));
     	
     	
         // Add Commands here:

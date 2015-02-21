@@ -32,24 +32,35 @@ public class  autoLiftTo extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	System.out.println("AutoLiftTo start");
     	Robot.liftPID.positionToX(spotTo);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	//System.out.println("Motor Power: " + Robot.liftPID.getLiftMotorPower());
+    	//System.out.print("Setpoint: " + Robot.liftPID.getSetpoint());
+    	//System.out.print("Position: " + Robot.liftPID.getSetpoint());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return Robot.liftPID.isFinished();
+    	boolean b = Robot.liftPID.isFinished();
+    	if (b)
+    	{
+    		System.out.println("Should finish");
+    	}
+    	return b;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("auto Lift end");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	end();
     }
 }

@@ -59,7 +59,6 @@ public class OI {
     public JoystickButton liftDownButton;
     public JoystickButton takeInButton;
     public JoystickButton dumpOutButton;
-    public JoystickButton tiltButton;
     public JoystickButton removeStackButton;
     public Joystick operatorJoystick;
 
@@ -72,8 +71,6 @@ public class OI {
         
         removeStackButton = new JoystickButton(operatorJoystick, 7);
         removeStackButton.whenPressed(new removeStack());
-        tiltButton = new JoystickButton(operatorJoystick, 5);
-        tiltButton.whenPressed(new BasiloidTilt());
         dumpOutButton = new JoystickButton(operatorJoystick, 3);
         dumpOutButton.whileHeld(new dumpOut());
         takeInButton = new JoystickButton(operatorJoystick, 2);
@@ -112,8 +109,6 @@ public class OI {
         SmartDashboard.putData("dumpOut", new dumpOut());
 
         SmartDashboard.putData("intakeStop", new intakeStop());
-
-        SmartDashboard.putData("BasiloidTilt", new BasiloidTilt());
 
         SmartDashboard.putData("intakeOpenClose", new intakeOpenClose());
 

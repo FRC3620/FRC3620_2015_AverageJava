@@ -30,19 +30,19 @@ public class RobotMap {
     public static DigitalInput liftPIDliftLimitBottom;
     public static DigitalInput liftPIDliftLimitTop;
     public static Encoder liftPIDLiftEncoder;
+    public static DoubleSolenoid driveStrafeSolenoid;
     public static SpeedController driveSpeedController2;
     public static SpeedController driveSpeedController1;
     public static SpeedController driveSpeedController3;
     public static SpeedController driveSpeedController0;
     public static RobotDrive driveRobotDrive4;
     public static Gyro drivedriveGyro;
+    public static SpeedController driveStrafeMotor;
     public static Solenoid pneumaticsvalveArm2_1;
     public static Solenoid pneumaticsvalveArm1_1;
     public static Solenoid pneumaticsvalveArm1_2;
     public static Solenoid pneumaticsvalveArm2_2;
     public static Compressor pneumaticsCompressor1;
-    public static Solenoid pneumaticsvalveBasiloid_1;
-    public static Solenoid pneumaticsvalveBasiloid_2;
     public static SpeedController intakeIntakeMotor2;
     public static SpeedController intakeIntakeMotor1;
     public static Encoder encoderSubsystemleftEncoder;
@@ -65,6 +65,9 @@ public class RobotMap {
         LiveWindow.addSensor("LiftPID", "LiftEncoder", liftPIDLiftEncoder);
         liftPIDLiftEncoder.setDistancePerPulse(0.00988);
         liftPIDLiftEncoder.setPIDSourceParameter(PIDSourceParameter.kDistance);
+        driveStrafeSolenoid = new DoubleSolenoid(0, 4, 5);      
+        LiveWindow.addActuator("Drive", "StrafeSolenoid", driveStrafeSolenoid);
+        
         driveSpeedController2 = new Talon(2);
         LiveWindow.addActuator("Drive", "Speed Controller 2", (Talon) driveSpeedController2);
         
@@ -88,6 +91,9 @@ public class RobotMap {
         drivedriveGyro = new Gyro(0);
         LiveWindow.addSensor("Drive", "driveGyro", drivedriveGyro);
         drivedriveGyro.setSensitivity(0.007);
+        driveStrafeMotor = new Talon(7);
+        LiveWindow.addActuator("Drive", "StrafeMotor", (Talon) driveStrafeMotor);
+        
         pneumaticsvalveArm2_1 = new Solenoid(0, 2);
         LiveWindow.addActuator("pneumatics", "valveArm2_1", pneumaticsvalveArm2_1);
         
@@ -102,12 +108,6 @@ public class RobotMap {
         
         pneumaticsCompressor1 = new Compressor(0);
         
-        
-        pneumaticsvalveBasiloid_1 = new Solenoid(0, 4);
-        LiveWindow.addActuator("pneumatics", "valveBasiloid_1", pneumaticsvalveBasiloid_1);
-        
-        pneumaticsvalveBasiloid_2 = new Solenoid(0, 5);
-        LiveWindow.addActuator("pneumatics", "valveBasiloid_2", pneumaticsvalveBasiloid_2);
         
         intakeIntakeMotor2 = new Talon(5);
         LiveWindow.addActuator("Intake", "IntakeMotor2", (Talon) intakeIntakeMotor2);

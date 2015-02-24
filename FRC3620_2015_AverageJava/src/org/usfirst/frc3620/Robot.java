@@ -35,6 +35,8 @@ import org.usfirst.frc3620.UDPReciever;
 import org.usfirst.frc3620.commands.*;
 import org.usfirst.frc3620.subsystems.*;
 
+import edu.wpi.first.wpilibj.Preferences;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -47,6 +49,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	public static OI oi;
 	
+	static Preferences preferences;
 	static RobotMode currentRobotMode = RobotMode.INIT, previousRobotMode;
 	PowerDistributionPanel pdp;
 	
@@ -69,6 +72,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit()
 	{
+		preferences = Preferences.getInstance();
 
 		RobotMap.init();
 
@@ -154,6 +158,13 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit()
 	{
+		String witchAutonomous = Robot.preferences.getString(PreferencesNames.AUTONOMOUS_CHOICE, PreferencesNames.AUTONOMOUS_CHOICE_TOTE_AND_BIN);
+		if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_TOTE_AND_BIN)){
+			autonomousCommand = new autonomous(); // tote and bin auto
+		}
+		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_MOVE_ONLY)){
+			autonomousCommand = new AutonomousMoveOnly(); // dumby command group
+		}
 		allInit(RobotMode.AUTONOMOUS);
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)

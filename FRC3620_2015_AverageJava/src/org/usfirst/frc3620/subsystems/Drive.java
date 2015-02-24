@@ -63,7 +63,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
+    //JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
     
     enum DesiredStrafeState {
     	LEAVE_IT, UP, DOWN
@@ -161,7 +161,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         
         //System.out.printf ("RaiseToPower code says %f, %f\n", joystickPosition.getX(), joystickPosition.getY());
         
-        isTurning();
+       isTurning();
         if (isTurning() == true)
         {
         	robotDrive4.arcadeDrive(joystickPosition.getY(), joystickPosition.getX());

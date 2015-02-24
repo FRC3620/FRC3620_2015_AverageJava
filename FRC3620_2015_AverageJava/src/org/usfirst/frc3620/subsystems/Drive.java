@@ -63,7 +63,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    //JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
+    JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
     
     enum DesiredStrafeState {
     	LEAVE_IT, UP, DOWN

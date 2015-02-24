@@ -58,20 +58,25 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    JoystickStabilization joystickStabilization = new SlewLimitJoystickStabilization();
+    //JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
+    
     public void arcadeDrive(GenericHID hid)
     {
     	teleOpDriveAssist.setOutputRange(-.5, .5);
     	// robotDrive4.arcadeDrive(hid.getY(), hid.getX());
         // double  x = hid.getRawAxis(1); //left x axis
         double move = hid.getRawAxis(1); //left y axis
-         double  rX= hid.getRawAxis(4);  //right x
+         double  rX = hid.getRawAxis(4);  //right x
+         JoystickPosition joystickPosition = joystickStabilization.stabilizeJoystick(rX, move);
         /* double  rMove = hid.getRawAxis(5); //right y
         if (SmartDashboard.getBoolean("drive.squared")) {
         double r2 = Math.sqrt(Math.abs(x * x * x));
         if (x < 0) {
             r2 = -r2; //left X
         }
-        **/
+        */
         double m2 = Math.abs(move * move);
         if (move > 0) {
             m2 = -m2; //left Y
@@ -80,12 +85,12 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         if (rX > 0) {
             r3 = -r3; //right X
         }
+ 	
         /*
         double m3 = Math.abs(rMove * rMove);
         if (rMove < 0) {
             m3 = -m3; //right Y
         }
-        
         //Limit forward speed
         if (m3 > speedYlimit || m2 > speedYlimit)
         {
@@ -113,22 +118,25 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         	r3 = -speedXlimit;
         	r2 = -speedXlimit;
         }
-        **/
+        */
+        
+        System.out.printf ("old code says %f, %f, new code says %f, %f\n", rX, move,  joystickPosition.getX(), joystickPosition.getY());
+        
         isTurning();
         if (isTurning() == true)
         {
-        	robotDrive4.arcadeDrive(m2, r3);
+        	robotDrive4.arcadeDrive(joystickPosition.getY(), joystickPosition.getX());
         	isTurning();
         	
         }
         else if (assistEnabled == true)
         {
-        	robotDrive4.arcadeDrive(m2, sideStick);  
+        	robotDrive4.arcadeDrive(joystickPosition.getY(), sideStick);  
         	isTurning();
         }
         else
         {
-        	robotDrive4.arcadeDrive(m2, r3);
+        	robotDrive4.arcadeDrive(joystickPosition.getX(), joystickPosition.getY());
         }
         
         //robotDrive4.arcadeDrive(m3, r3);

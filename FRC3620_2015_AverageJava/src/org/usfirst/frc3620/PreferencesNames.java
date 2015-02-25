@@ -24,8 +24,8 @@ public class PreferencesNames {
     public static final String AUTONOMOUS_CHOICE_MOVE_ONLY = "Move Only";
     
     public static final String JOY_STABAL_NONE = "None";
-    public static final String JOY_STABAL_VED = "Ved";
-    public static final String JOY_STABAL_PATRICK = "Patrick";
+    public static final String JOY_STABAL_RAISE_TO_POWER = "raise to power";
+    public static final String JOY_STABAL_SLEW_LIMIT = "slew limiter";
     public static final String JOY_STABAL_CHOICE = "joystick stabalization choice";
 
     public static final String[] AUTONOMOUS_ALL_CHOICES = new String[]{
@@ -36,8 +36,8 @@ public class PreferencesNames {
     
     public static final String[] JOY_STABAL_ALL_CHOICES = new String[]{
         JOY_STABAL_NONE,
-        JOY_STABAL_VED,
-        JOY_STABAL_PATRICK,
+        JOY_STABAL_RAISE_TO_POWER,
+        JOY_STABAL_SLEW_LIMIT,
     };
     
   

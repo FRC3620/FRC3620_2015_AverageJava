@@ -11,6 +11,7 @@
 
 package org.usfirst.frc3620.subsystems;
 
+import org.usfirst.frc3620.PreferencesNames;
 import org.usfirst.frc3620.Robot;
 import org.usfirst.frc3620.RobotMap;
 import org.usfirst.frc3620.RobotMode;
@@ -46,6 +47,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     long timeStart;
     long time2;
     public boolean assistEnabled = false;
+    JoystickStabilization joystickStabilization = null;
     
     PIDController teleOpDriveAssist = new PIDController(pT, iT, dT, this, this);
     // Put methods for controlling this subsystem
@@ -62,8 +64,6 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
-    JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
     
     enum DesiredStrafeState {
     	LEAVE_IT, UP, DOWN
@@ -302,5 +302,21 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 	{
 		strafeUp();
 	}
+	
+	public void setJoyStabalType(String type)
+	{
+		if(type.equals(PreferencesNames.JOY_STABAL_RAISE_TO_POWER))
+		{
+			joystickStabilization = new RaiseToPowerJoystickStabilization();
+		}
+		else if(type.equals(PreferencesNames.JOY_STABAL_SLEW_LIMIT)) {
+			
+			joystickStabilization = new SlewLimitJoystickStabilization();
+		}
+		else
+		{
+			joystickStabilization = new DoNothingJoystickStabilization();
+		}
+}
 }
 

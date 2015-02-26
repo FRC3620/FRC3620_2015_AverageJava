@@ -35,6 +35,8 @@ import org.usfirst.frc3620.UDPReciever;
 import org.usfirst.frc3620.commands.*;
 import org.usfirst.frc3620.subsystems.*;
 
+import com.ni.vision.VisionException;
+
 import edu.wpi.first.wpilibj.Preferences;
 
 /**
@@ -73,7 +75,7 @@ public class Robot extends IterativeRobot {
 	public void robotInit()
 	{
 		preferences = Preferences.getInstance();
-
+		
 		RobotMap.init();
 
 		try
@@ -128,13 +130,18 @@ public class Robot extends IterativeRobot {
 		}
 		
 		// startup camera server
-		cameraServer = CameraServer.getInstance();
+		try{
+			cameraServer = CameraServer.getInstance();
+		
 		// 25 seems to be less laggy than 50. 10 does not seem to be much better lag wise
 		// then 25, and is really poor quality.
         cameraServer.setQuality(25);
         //the camera name (ex "cam0") can be found through the roborio web interface
         cameraServer.startAutomaticCapture("cam0");
-
+		}catch(VisionException vision)
+		{
+			System.out.println("no camera");
+		}
 	}
 
 	/**
@@ -194,6 +201,8 @@ public class Robot extends IterativeRobot {
 		
 		// the cancel was *deliberately* before this!
 		allInit(RobotMode.TELEOP);
+		dumpPreferences();
+		Robot.drive.setJoyStabalType(preferences.getString(PreferencesNames.JOY_STABAL_CHOICE, "xx"));
 	}
 
 	/**
@@ -278,7 +287,7 @@ public class Robot extends IterativeRobot {
 					//RobotMap.pneumaticsCompressor1.getCompressorCurrent()));
 		}
 		
-		double liftPosition = liftPID.liftEncoderValue();
+		double d = liftPID.liftEncoderValue();
 		double setPoint = liftPID.getPIDController().getSetpoint();
 		double motorPower = RobotMap.liftPIDliftMotor.get();
 		//System.out.printf("setpoint = %f, position = %f, pwoer = %f\n", setPoint, liftPosition, motorPower);
@@ -292,6 +301,14 @@ public class Robot extends IterativeRobot {
 	
 	public static RobotMode getPreviousRobotMode() {
 		return previousRobotMode;
+	}
+	
+	public void dumpPreferences()
+	{
+		for(Object a: preferences.getKeys())
+		{
+			System.out.println(a + "=" + preferences.getString((String) a, "foobar"));
+		}
 	}
 
 }

@@ -308,6 +308,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 		if(type.equals(PreferencesNames.JOY_STABAL_RAISE_TO_POWER))
 		{
 			joystickStabilization = new RaiseToPowerJoystickStabilization();
+			
 		}
 		else if(type.equals(PreferencesNames.JOY_STABAL_SLEW_LIMIT)) {
 			
@@ -317,6 +318,8 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 		{
 			joystickStabilization = new DoNothingJoystickStabilization();
 		}
+		System.out.println(joystickStabilization);
+		System.out.println(type);
 }
 }
 

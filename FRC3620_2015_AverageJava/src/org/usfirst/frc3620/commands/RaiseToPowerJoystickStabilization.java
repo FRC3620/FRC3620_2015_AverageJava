@@ -20,7 +20,7 @@ public class RaiseToPowerJoystickStabilization extends JoystickStabilization {
 	            r3 = -r3; //right X
 	        }
 		
-			//System.out.println ("A: " + rX + " " + move + " " + m2 + " " + r3);
+
 			
         
         

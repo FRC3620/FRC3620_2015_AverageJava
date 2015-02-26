@@ -12,12 +12,18 @@
 package org.usfirst.frc3620.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.slf4j.Logger;
+import org.usfirst.frc3620.EventLogging;
+import org.usfirst.frc3620.EventLogging.Level;
 import org.usfirst.frc3620.Robot;
 
 /**
  *
  */
 public class  autoLiftTo extends Command {
+	
+	static Logger logger = EventLogging.getLogger(autoLiftTo.class, Level.INFO);
 
 	final double spotTo;
     public autoLiftTo(double position) {
@@ -32,7 +38,7 @@ public class  autoLiftTo extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.println("AutoLiftTo start");
+    	Robot.commandInitialized(this);
     	Robot.liftPID.positionToX(spotTo);
     }
 
@@ -46,21 +52,18 @@ public class  autoLiftTo extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	boolean b = Robot.liftPID.isFinished();
-    	if (b)
-    	{
-    		System.out.println("Should finish");
-    	}
+    	logger.debug("isFinished = {}", b);
     	return b;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	System.out.println("auto Lift end");
+    	Robot.commandEnded(this);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
+    	Robot.commandInterrupted(this);
     }
 }

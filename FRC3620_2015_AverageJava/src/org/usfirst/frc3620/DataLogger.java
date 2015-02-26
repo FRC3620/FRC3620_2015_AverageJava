@@ -108,30 +108,38 @@ public class DataLogger {
 	{
 		if(shouldLogData())
 		{
-		try
-		{
-			//FileWriter writer = new FileWriter("test.csv");
-			
-			if (ps == null)
+			try
 			{
-				File outputFilename = new File(parentDirectory, getFileName());
-				ps = new PrintStream(new FileOutputStream(outputFilename));
-				ps.print("time,timeSinceStart");
-				writelist(ps, dataNames);
-				startTime = System.currentTimeMillis();
+				if (ps == null)
+				{
+					synchronized (this) {
+						if (ps == null) {
+							String timestampString = LogTimestamp.getTimestampString();
+							if (timestampString != null) {
+								File logFile = new File(parentDirectory, timestampString + ".csv");
+								ps = new PrintStream(new FileOutputStream(logFile));
+								ps.print("time,timeSinceStart");
+								writelist(ps, dataNames);
+								startTime = System.currentTimeMillis();
+							}
+						}
+					}
+				}
+				if (ps != null)
+				{
+					timeUpdated = (System.currentTimeMillis()-startTime);
+					ps.print(getDate());
+					ps.print(',');
+					ps.print(timeUpdated);
+					writelist(ps, dataValues);
+					ps.flush();
+					timeSinceLog = System.currentTimeMillis();
+				}
 			}
-			timeUpdated = (System.currentTimeMillis()-startTime);
-			ps.print(getDate());
-			ps.print(',');
-			ps.print(timeUpdated);
-			writelist(ps, dataValues);
-			ps.flush();
-			timeSinceLog = System.currentTimeMillis();
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
+			catch(IOException e)
+			{
+				e.printStackTrace();
+			}
 		}
 		
 		dataValues.clear();
@@ -157,15 +165,7 @@ public class DataLogger {
 	}
 	
 	SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss.SS");
-	SimpleDateFormat formatName = new SimpleDateFormat("yyyyMMdd-HHmmss");
 	
-	public String getFileName()
-	{
-		Date curDate = new Date();
-		String DateToStr = formatName.format(curDate) + ".csv";
-		return DateToStr;
-	}
-
 	public void setMinimumInterval(long minimumInterval) {
 		this.minimumInterval = minimumInterval;
 	}

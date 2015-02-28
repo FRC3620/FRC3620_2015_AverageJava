@@ -63,7 +63,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
+    JoystickStabilization joystickStabilization = new SlewLimitJoystickStabilization();
     
     enum DesiredStrafeState {
     	LEAVE_IT, UP, DOWN
@@ -159,7 +159,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         }
         **/
         
-        //System.out.printf ("RaiseToPower code says %f, %f\n", joystickPosition.getX(), joystickPosition.getY());
+        System.out.printf ("Raw Joysitck %f, %f Processed Joystick %f, %f \n", rX, move, joystickPosition.getX(), joystickPosition.getY());
         
        isTurning();
         if (isTurning() == true)

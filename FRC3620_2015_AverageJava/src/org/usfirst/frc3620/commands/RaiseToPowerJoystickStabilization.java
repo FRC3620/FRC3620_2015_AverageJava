@@ -12,11 +12,11 @@ public class RaiseToPowerJoystickStabilization extends JoystickStabilization {
 		double move = y;
 		
 		 double m2 = Math.abs(move * move);
-	        if (move > 0) {
+	        if (move < 0) {
 	            m2 = -m2; //left Y
 	        }
 	        double r3 = Math.sqrt(Math.abs(rX * rX * rX));
-	        if (rX > 0) {
+	        if (rX < 0) {
 	            r3 = -r3; //right X
 	        }
 		

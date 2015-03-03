@@ -269,11 +269,11 @@ public class Robot extends IterativeRobot {
 		}
 		drive.getGyroAngle();
 		SmartDashboard.putNumber("GyroAngle", drive.gyroAngle);
-		encoderSubsystem.getLeftEncoder();
+		//encoderSubsystem.getLeftEncoder();
 		//SmartDashboard.putNumber("Left encoder. Inches traveled.",
 				//encoderSubsystem.getleftEncoder().);
-		encoderSubsystem.getRightEncoder();
-		SmartDashboard.putNumber("Right encoder. Inches traveled.",
+		//encoderSubsystem.getRightEncoder();
+		SmartDashboard.putNumber("Left encoder. Inches traveled.",
 				encoderSubsystem.getLeftEncoder());
 		SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
 		SmartDashboard.putNumber("Setpoint for lift: ", Robot.liftPID.getSetpoint());

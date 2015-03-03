@@ -2,32 +2,20 @@ package org.usfirst.frc3620.commands;
 
 public class RaiseToPowerJoystickStabilization extends JoystickStabilization {
 
-
-	
-
-	 @Override
+	@Override
 	public JoystickPosition stabilizeJoystick(double x, double y)
 	{
-		double rX = x;
-		double move = y;
-		
-		 double m2 = Math.abs(move * move);
-	        if (move > 0) {
-	            m2 = -m2; //left Y
-	        }
-	        double r3 = Math.sqrt(Math.abs(rX * rX * rX));
-	        if (rX > 0) {
-	            r3 = -r3; //right X
-	        }
-		
-			//System.out.println ("A: " + rX + " " + move + " " + m2 + " " + r3);
-			
-        
-        
-		JoystickPosition returnValue = new JoystickPosition(r3, m2);
-		
+		double y2 = Math.abs(y * y);
+		if (y < 0)
+		{
+			y2 = -y2; // left Y
+		}
+		double x2 = Math.sqrt(Math.abs(x * x * x));
+		if (x < 0)
+		{
+			x2 = -x2; // right X
+		}
+		JoystickPosition returnValue = new JoystickPosition(x2, y2);
 		return returnValue;
-		
-		
 	}
 }

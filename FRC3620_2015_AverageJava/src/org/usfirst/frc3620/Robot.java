@@ -31,6 +31,8 @@ import org.usfirst.frc3620.subsystems.*;
 
 import com.ni.vision.VisionException;
 
+import com.ni.vision.VisionException;
+
 import edu.wpi.first.wpilibj.Preferences;
 
 /**
@@ -100,7 +102,7 @@ public class Robot extends IterativeRobot {
 		logger.info ("Starting robotInit");
 		
 		preferences = Preferences.getInstance();
-
+		
 		RobotMap.init();
 
 		if (false) // turn off UDPReciver
@@ -157,8 +159,21 @@ public class Robot extends IterativeRobot {
 			logger.error("Unable to load vision");
 		}
 		
-		new VideoFeeder();
+		new VideoFeeder(); // start sending data to the raspberry PI
 
+		// startup camera server
+		try{
+			cameraServer = CameraServer.getInstance();
+
+			// 25 seems to be less laggy than 50. 10 does not seem to be much better lag wise
+			// then 25, and is really poor quality.
+			cameraServer.setQuality(25);
+			//the camera name (ex "cam0") can be found through the roborio web interface
+			cameraServer.startAutomaticCapture("cam0");
+		}catch(VisionException vision)
+		{
+			System.out.println("no camera");
+		}
 	}
 
 	/**
@@ -187,7 +202,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new autonomous(); // tote and bin auto
 		}
 		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_MOVE_ONLY)){
-			autonomousCommand = new AutonomousMoveOnly(); // dumby command group
+			autonomousCommand = new AutoMove(10, 1.0);
 		}
 		allInit(RobotMode.AUTONOMOUS);
 		// schedule the autonomous command (example)
@@ -218,6 +233,8 @@ public class Robot extends IterativeRobot {
 		
 		// the cancel was *deliberately* before this!
 		allInit(RobotMode.TELEOP);
+		dumpPreferences();
+		Robot.drive.setJoyStabalType(preferences.getString(PreferencesNames.JOY_STABAL_CHOICE, "xx"));
 	}
 
 	/**
@@ -287,12 +304,12 @@ public class Robot extends IterativeRobot {
 		}
 		drive.getGyroAngle();
 		SmartDashboard.putNumber("GyroAngle", drive.gyroAngle);
-		encoderSubsystem.getLeftEncoder();
+		//encoderSubsystem.getLeftEncoder();
+		//SmartDashboard.putNumber("Left encoder. Inches traveled.",
+				//encoderSubsystem.getleftEncoder().);
+		//encoderSubsystem.getRightEncoder();
 		SmartDashboard.putNumber("Left encoder. Inches traveled.",
-				encoderSubsystem.leftEncoderValue);
-		encoderSubsystem.getRightEncoder();
-		SmartDashboard.putNumber("Right encoder. Inches traveled.",
-				encoderSubsystem.leftEncoderValue);
+				encoderSubsystem.getLeftEncoder());
 		SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
 		SmartDashboard.putNumber("Setpoint for lift: ", Robot.liftPID.getSetpoint());
 		SmartDashboard.putNumber("DriveEncoder: ", Robot.encoderSubsystem.getRightEncoder());
@@ -305,7 +322,7 @@ public class Robot extends IterativeRobot {
 					//RobotMap.pneumaticsCompressor1.getCompressorCurrent()));
 		}
 		
-		double liftPosition = liftPID.liftEncoderValue();
+		double d = liftPID.liftEncoderValue();
 		double setPoint = liftPID.getPIDController().getSetpoint();
 		double motorPower = RobotMap.liftPIDliftMotor.get();
 		//System.out.printf("setpoint = %f, position = %f, pwoer = %f\n", setPoint, liftPosition, motorPower);
@@ -341,6 +358,14 @@ public class Robot extends IterativeRobot {
 		if (!logDirectory.isDirectory()) return null;
 		
 		return logDirectory;
+	}
+
+	public void dumpPreferences()
+	{
+		for(Object a: preferences.getKeys())
+		{
+			System.out.println(a + "=" + preferences.getString((String) a, "foobar"));
+		}
 	}
 
 }

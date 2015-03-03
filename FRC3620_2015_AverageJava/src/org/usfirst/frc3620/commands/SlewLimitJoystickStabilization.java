@@ -14,12 +14,12 @@ public class SlewLimitJoystickStabilization extends JoystickStabilization {
 		
 		if( x > 0.2 || x < -0.2)
 		{
-			System.out.println("valuex is true");
+			//System.out.println("valuex is true");
 			valuex = true;
 		}
 		else
 		{
-			System.out.println("valuex is false");
+			//System.out.println("valuex is false");
 			outputx = 0;
 			valuex = false;
 		}
@@ -27,7 +27,7 @@ public class SlewLimitJoystickStabilization extends JoystickStabilization {
 		if(valuex)
 		{
 			double error = joystickx - outputx;
-			outputx += error * 0.1;
+			outputx += error * 0.035;
 			//System.out.println("patrick");
 		}
 		
@@ -45,7 +45,7 @@ public class SlewLimitJoystickStabilization extends JoystickStabilization {
 		if(valuey)
 		{
 			double error = joysticky - outputy;
-			outputy += error * 0.1;
+			outputy += error * 0.035;
 			//System.out.println("ved");
 		}
 		

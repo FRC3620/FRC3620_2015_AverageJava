@@ -11,6 +11,7 @@
 
 package org.usfirst.frc3620.subsystems;
 
+import org.usfirst.frc3620.PreferencesNames;
 import org.usfirst.frc3620.Robot;
 import org.usfirst.frc3620.RobotMap;
 import org.usfirst.frc3620.RobotMode;
@@ -46,6 +47,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     long timeStart;
     long time2;
     public boolean assistEnabled = false;
+    JoystickStabilization joystickStabilization = null;
     
     PIDController teleOpDriveAssist = new PIDController(pT, iT, dT, this, this);
     // Put methods for controlling this subsystem
@@ -62,8 +64,6 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    
-    JoystickStabilization joystickStabilization = new RaiseToPowerJoystickStabilization();
     
     enum DesiredStrafeState {
     	LEAVE_IT, UP, DOWN
@@ -173,7 +173,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         }
         **/
         
-        //System.out.printf ("RaiseToPower code says %f, %f\n", joystickPosition.getX(), joystickPosition.getY());
+        System.out.printf ("Raw Joysitck %f, %f Processed Joystick %f, %f \n", rX, move, joystickPosition.getX(), joystickPosition.getY());
         
        isTurning();
         if (isTurning() == true)
@@ -296,10 +296,10 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 		Robot.encoderSubsystem.leftEncoder.reset();
 	}
 	public void strafeDown(){
-		strafeSolenoid.set(Value.kForward);
+		strafeSolenoid.set(Value.kReverse);
 	}
 	public void strafeUp(){
-		strafeSolenoid.set(Value.kReverse);
+		strafeSolenoid.set(Value.kForward);
 	}
 	public void setStrafeMotor(double power)
 	{
@@ -316,5 +316,23 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 	{
 		strafeUp();
 	}
+	
+	public void setJoyStabalType(String type)
+	{
+		if(type.equals(PreferencesNames.JOY_STABAL_RAISE_TO_POWER))
+		{
+			joystickStabilization = new RaiseToPowerJoystickStabilization();
+			
+		}
+		else if(type.equals(PreferencesNames.JOY_STABAL_SLEW_LIMIT)) {
+			
+			joystickStabilization = new SlewLimitJoystickStabilization();
+		}
+		else
+		{
+			joystickStabilization = new DoNothingJoystickStabilization();
+		}
+		System.out.println("Stabilization = " + joystickStabilization + " " + type);
+    }
 }
 

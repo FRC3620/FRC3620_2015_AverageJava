@@ -32,7 +32,7 @@ public class encoderSubsystem extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    public double leftEncoderValue = 0;
+    double leftEncoderValue = 0;
     public double getLeftEncoder()
     {
     	leftEncoderValue = leftEncoder.getDistance();

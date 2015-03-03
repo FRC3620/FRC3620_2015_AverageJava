@@ -23,6 +23,7 @@ public class  AutoMove extends Command {
 	public double howFar;
 	public double howFast;
     public AutoMove(double distance, double power) {
+    	System.out.println("hello");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     		howFar = distance;
@@ -54,7 +55,7 @@ public class  AutoMove extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (Math.abs(Robot.encoderSubsystem.getRightEncoder()) >= Math.abs(howFar))
+    	if (Math.abs(Robot.encoderSubsystem.getLeftEncoder()) >= Math.abs(howFar))
     	{
     		
     		System.out.println("AutoMove End");

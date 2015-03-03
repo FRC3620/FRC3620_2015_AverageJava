@@ -170,7 +170,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new autonomous(); // tote and bin auto
 		}
 		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_MOVE_ONLY)){
-			autonomousCommand = new AutonomousMoveOnly(); // dumby command group
+			autonomousCommand = new AutoMove(10, 1.0);
 		}
 		allInit(RobotMode.AUTONOMOUS);
 		// schedule the autonomous command (example)
@@ -270,11 +270,11 @@ public class Robot extends IterativeRobot {
 		drive.getGyroAngle();
 		SmartDashboard.putNumber("GyroAngle", drive.gyroAngle);
 		encoderSubsystem.getLeftEncoder();
-		SmartDashboard.putNumber("Left encoder. Inches traveled.",
-				encoderSubsystem.leftEncoderValue);
+		//SmartDashboard.putNumber("Left encoder. Inches traveled.",
+				//encoderSubsystem.getleftEncoder().);
 		encoderSubsystem.getRightEncoder();
 		SmartDashboard.putNumber("Right encoder. Inches traveled.",
-				encoderSubsystem.leftEncoderValue);
+				encoderSubsystem.getLeftEncoder());
 		SmartDashboard.putNumber("Lift encoder", liftPID.liftEncoderValue());
 		SmartDashboard.putNumber("Setpoint for lift: ", Robot.liftPID.getSetpoint());
 		SmartDashboard.putNumber("DriveEncoder: ", Robot.encoderSubsystem.getRightEncoder());

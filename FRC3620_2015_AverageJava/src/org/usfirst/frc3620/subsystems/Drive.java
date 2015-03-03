@@ -282,10 +282,10 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 		Robot.encoderSubsystem.leftEncoder.reset();
 	}
 	public void strafeDown(){
-		strafeSolenoid.set(Value.kForward);
+		strafeSolenoid.set(Value.kReverse);
 	}
 	public void strafeUp(){
-		strafeSolenoid.set(Value.kReverse);
+		strafeSolenoid.set(Value.kForward);
 	}
 	public void setStrafeMotor(double power)
 	{
@@ -318,8 +318,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 		{
 			joystickStabilization = new DoNothingJoystickStabilization();
 		}
-		System.out.println(joystickStabilization);
-		System.out.println(type);
-}
+		System.out.println("Stabilization = " + joystickStabilization + " " + type);
+    }
 }
 

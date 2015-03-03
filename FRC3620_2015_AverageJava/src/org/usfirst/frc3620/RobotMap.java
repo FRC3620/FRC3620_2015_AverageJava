@@ -87,7 +87,10 @@ public class RobotMap {
         driveRobotDrive4.setExpiration(0.1);
         driveRobotDrive4.setSensitivity(0.5);
         driveRobotDrive4.setMaxOutput(1.0);
-
+        driveRobotDrive4.setInvertedMotor(RobotDrive.MotorType.kFrontLeft, true);
+        driveRobotDrive4.setInvertedMotor(RobotDrive.MotorType.kRearLeft, true);
+        driveRobotDrive4.setInvertedMotor(RobotDrive.MotorType.kFrontRight, true);
+        driveRobotDrive4.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         drivedriveGyro = new Gyro(0);
         LiveWindow.addSensor("Drive", "driveGyro", drivedriveGyro);
         drivedriveGyro.setSensitivity(0.007);

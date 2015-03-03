@@ -43,11 +43,11 @@ public class  AutonomousTurn extends Command {
     protected void execute() {
     	if (angle < 0)
     	{
-    	Robot.drive.setDrive(0, .75);
+    	Robot.drive.setDrive(0, -.75);
     	}
     	else
     	{
-    		Robot.drive.setDrive(0, -.75);
+    		Robot.drive.setDrive(0, .75);
     	}
     }
 

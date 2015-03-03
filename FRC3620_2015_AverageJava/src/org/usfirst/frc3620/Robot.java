@@ -30,7 +30,6 @@ import org.usfirst.frc3620.commands.*;
 import org.usfirst.frc3620.subsystems.*;
 
 import com.ni.vision.VisionException;
-
 import com.ni.vision.VisionException;
 
 import edu.wpi.first.wpilibj.Preferences;
@@ -47,7 +46,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	public static OI oi;
 	
-	static Preferences preferences;
+	public static Preferences preferences;
 	static private RobotMode currentRobotMode = RobotMode.INIT, previousRobotMode;
 	PowerDistributionPanel pdp;
 	
@@ -202,7 +201,9 @@ public class Robot extends IterativeRobot {
 			autonomousCommand = new autonomous(); // tote and bin auto
 		}
 		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_MOVE_ONLY)){
+			
 			autonomousCommand = new AutoMove(10, 1.0);
+
 		}
 		allInit(RobotMode.AUTONOMOUS);
 		// schedule the autonomous command (example)
@@ -360,7 +361,7 @@ public class Robot extends IterativeRobot {
 		return logDirectory;
 	}
 
-	public void dumpPreferences()
+	public static void dumpPreferences()
 	{
 		for(Object a: preferences.getKeys())
 		{

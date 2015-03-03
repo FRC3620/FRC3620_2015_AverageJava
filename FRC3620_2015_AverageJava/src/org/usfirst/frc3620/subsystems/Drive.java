@@ -205,9 +205,14 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     {
     	robotDrive4.arcadeDrive(0, 0);
     }
+    /**
+     * sets the arcade drive to the parameters. 
+     * @param move. the y axis. passing in a positive number is forward.
+     * @param rotate. the x axis.
+     */
     public void setDrive(double move, double rotate)
     {
-    	robotDrive4.arcadeDrive(move, rotate);   
+    	robotDrive4.arcadeDrive(-move, rotate);   
     }
     
     public double gyroAngle = 0;
@@ -314,6 +319,8 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 	
 	public void allInit(RobotMode mode)
 	{
+		Robot.dumpPreferences();
+		Robot.drive.setJoyStabalType(Robot.preferences.getString(PreferencesNames.JOY_STABAL_CHOICE, "xx"));
 		strafeUp();
 	}
 	

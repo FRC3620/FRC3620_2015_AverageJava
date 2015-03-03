@@ -69,10 +69,24 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     	LEAVE_IT, UP, DOWN
     }
     
+    /*
+     * pull this out to a separate method so that we can get to it from telemetry and other places
+     */
+    public double getJoystickY(GenericHID hid) {
+    	return hid.getRawAxis(1);
+    }
+    
+    /*
+     * pull this out to a separate method so that we can get to it from telemetry and other places
+     */
+    public double getJoystickX(GenericHID hid) {
+    	return hid.getRawAxis(4);
+    }
+    
     public void arcadeDrive(GenericHID hid)
     {
-    	 double move = hid.getRawAxis(1); //left y axis
-         double  rX= hid.getRawAxis(4);  //right x
+    	 double move = getJoystickY(hid);
+         double  rX= getJoystickX(hid);
          
     	double joystickStrafe = getJoystickStrafe(hid);
     	setStrafeMotor(joystickStrafe);

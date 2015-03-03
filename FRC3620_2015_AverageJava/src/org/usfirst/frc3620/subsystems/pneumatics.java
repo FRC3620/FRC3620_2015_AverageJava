@@ -111,7 +111,6 @@ public class pneumatics extends Subsystem {
 	**/
 	String macString;
 	public void checkForPneumatics() {
-		InetAddress ip;
 		try {
 
 			for (Enumeration<NetworkInterface> e = NetworkInterface
@@ -120,13 +119,10 @@ public class pneumatics extends Subsystem {
 				System.out.println("network " + network);
 				byte[] mac = network.getHardwareAddress();
 				if (mac != null) {
-					System.out.print("Current MAC address:");
-
 					StringBuilder sb = new StringBuilder();
 					for (int i = 0; i < mac.length; i++) {
 						sb.append(String.format("%02X%s", mac[i],
 								(i < mac.length - 1) ? "-" : ""));
-						
 					}
 					//Mule Board (wegscheid) MAC: "00-80-2F-17-EA-A4"
 					//						 MAC: "00-80-2F-17-EA-A5"
@@ -134,8 +130,7 @@ public class pneumatics extends Subsystem {
 					//Prototype (3620 Spare) MAC: "00-80-2F-17-EB-09"
 					//						 MAC: "00-80-2F-17-EB-08"
 					macString = sb.toString();
-					System.out.println("testString:"+ macString);
-					System.out.println("MAC: "+sb);
+					System.out.println("Current MAC address: " + macString);
 					if (macString.equals("00-80-2F-17-EB-09")
 							|| macString.equals("00-80-2F-17-EB-08")) {
 						havePneumatics = true;
@@ -145,9 +140,7 @@ public class pneumatics extends Subsystem {
 			}
 
 		} catch (SocketException e) {
-
 			e.printStackTrace();
-
 		}
 
 	}

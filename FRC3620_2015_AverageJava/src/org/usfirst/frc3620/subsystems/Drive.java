@@ -119,61 +119,8 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
         // double  x = hid.getRawAxis(1); //left x axis
 
         JoystickPosition joystickPosition = joystickStabilization.stabilizeJoystick(rX, move);
-        	        
- 
-         
-         
-        /* double  rMove = hid.getRawAxis(5); //right y
-        if (SmartDashboard.getBoolean("drive.squared")) {
-        double r2 = Math.sqrt(Math.abs(x * x * x));
-        if (x < 0) {
-            r2 = -r2; //left X
-        }
-        
-        double m2 = Math.abs(move * move);
-        if (move > 0) {
-            m2 = -m2; //left Y
-        }
-        double r3 = Math.sqrt(Math.abs(rX * rX * rX));
-        if (rX > 0) {
-            r3 = -r3; //right X
-        }
-        
-        double m3 = Math.abs(rMove * rMove);
-        if (rMove < 0) {
-            m3 = -m3; //right Y
-        }
-        
-        //Limit forward speed
-        if (m3 > speedYlimit || m2 > speedYlimit)
-        {
-        	m3 = speedYlimit;
-        	m2 = speedYlimit;
-        }
-        
-        //Limit reverse speed
-        if (m3 < -speedYlimit || m2 < -speedYlimit)
-        {
-        	m3 = -speedYlimit;
-        	m2 = -speedYlimit;
-        }
-        
-        //Limit turn speed
-        if (r3 > speedXlimit || r2 > speedXlimit)
-        {
-        	r3 = speedXlimit;
-        	r2 = speedXlimit;
-        }
-        
-        //Limit turn speed
-        if (r3 < -speedXlimit || r2 < -speedXlimit)
-        {
-        	r3 = -speedXlimit;
-        	r2 = -speedXlimit;
-        }
-        **/
-        
-        System.out.printf ("Raw Joysitck %f, %f Processed Joystick %f, %f \n", rX, move, joystickPosition.getX(), joystickPosition.getY());
+        	  
+        //System.out.printf ("Raw Joysitck %f, %f Processed Joystick %f, %f \n", rX, move, joystickPosition.getX(), joystickPosition.getY());
         
        isTurning();
         if (isTurning() == true)

@@ -120,7 +120,7 @@ public class RobotMap {
         
         encoderSubsystemleftEncoder = new Encoder(2, 3, true, EncodingType.k4X);
         LiveWindow.addSensor("encoderSubsystem", "leftEncoder", encoderSubsystemleftEncoder);
-        encoderSubsystemleftEncoder.setDistancePerPulse(0.00409061543436171);
+        encoderSubsystemleftEncoder.setDistancePerPulse(0.09817477042468103);
         encoderSubsystemleftEncoder.setPIDSourceParameter(PIDSourceParameter.kDistance);
         encoderSubsystemrightEncoder = new Encoder(4, 5, true, EncodingType.k4X);
         LiveWindow.addSensor("encoderSubsystem", "rightEncoder", encoderSubsystemrightEncoder);

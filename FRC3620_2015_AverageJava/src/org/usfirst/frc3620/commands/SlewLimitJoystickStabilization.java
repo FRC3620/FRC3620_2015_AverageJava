@@ -45,7 +45,7 @@ public class SlewLimitJoystickStabilization extends JoystickStabilization {
 		if(valuey)
 		{
 			double error = joysticky - outputy;
-			outputy += error * 0.035;
+			outputy += error * 0.055;
 			//System.out.println("ved");
 		}
 		

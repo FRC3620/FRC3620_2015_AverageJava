@@ -33,6 +33,7 @@ public class  liftDown extends Command {
     // Called just before this Command runs the first time
     
     protected void initialize() {
+    	Robot.commandInitialized(this);
     		System.out.println("liftDownStart");
     		Robot.liftPID.liftDown();
     	//System.out.println("lift down start \n liftPot: " + Robot.lift.getLiftPot());
@@ -51,12 +52,15 @@ public class  liftDown extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.commandEnded(this);
+
     	System.out.println("lift down end");
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.commandInterrupted(this);
     	end();
     }
 }

@@ -49,6 +49,7 @@ public class  AutonomousMove extends Command implements PIDSource, PIDOutput {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.commandInitialized(this);
     	System.out.println("in autonomousMove");
     	checkChange();
     	Robot.encoderSubsystem.resetEncoders();
@@ -66,6 +67,7 @@ public class  AutonomousMove extends Command implements PIDSource, PIDOutput {
     // Make this return true when this Command no longer needs to run execute()
     //Encoder values are returned in feet. 
     protected boolean isFinished() {
+    	
     	if(Robot.encoderSubsystem.getLeftEncoder() > 36)
     	{
     		return true;
@@ -87,6 +89,7 @@ public class  AutonomousMove extends Command implements PIDSource, PIDOutput {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.commandEnded(this);
     	Robot.drive.turnMotorsOff();
     	pidDriveStraight.disable();
     }
@@ -95,6 +98,7 @@ public class  AutonomousMove extends Command implements PIDSource, PIDOutput {
     // subsystems is scheduled to run
     protected void interrupted()
     {
+    	Robot.commandInterrupted(this);
     	end();
     }
 

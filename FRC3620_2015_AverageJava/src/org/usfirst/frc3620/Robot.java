@@ -202,13 +202,18 @@ public class Robot extends IterativeRobot {
 		}
 		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_MOVE_ONLY)){
 			
-			autonomousCommand = new AutoMove(10, 1.0);
+			autonomousCommand = new AutonomousMoveOnly();
 
+		}
+		else
+		{
+			autonomousCommand = new AutonomousDoNothing();//does nothing
 		}
 		allInit(RobotMode.AUTONOMOUS);
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
+		logger.info("Using autonomous {} (prefs were {} )", autonomousCommand, witchAutonomous);
 	}
 
 	/**

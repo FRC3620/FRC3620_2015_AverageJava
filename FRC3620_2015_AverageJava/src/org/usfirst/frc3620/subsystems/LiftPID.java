@@ -267,12 +267,20 @@ public class LiftPID extends PIDSubsystem {
     	double speed = Robot.oi.operatorJoystick.getRawAxis(5);
     	if (isOkToMoveLift(speed) && (speed < -0.2 || speed > 0.2))
     	{
-    		liftMotor.set(speed);
+    		if(liftEncoder.getDistance() < 7.0 && speed > 0)
+    		{
+    			liftMotor.set(speed * 0.15);
+    		}
+    		else
+    		{
+    			liftMotor.set(speed);
+    		}
     	}
     	else
     	{
     		liftMotor.set(0);
     	}
+    	
     }
     public boolean limitBottom()
     {

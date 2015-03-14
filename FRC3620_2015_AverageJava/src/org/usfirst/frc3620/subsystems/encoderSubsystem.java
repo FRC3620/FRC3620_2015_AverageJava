@@ -35,8 +35,7 @@ public class encoderSubsystem extends Subsystem {
     double leftEncoderValue = 0;
     public double getLeftEncoder()
     {
-    	leftEncoderValue = leftEncoder.getDistance();
-    	return leftEncoderValue;
+    	return leftEncoder.getDistance();
     }
     
     double rightEncoderValue = 0;

@@ -37,6 +37,7 @@ public class  AutonomousTurn extends Command {
     protected void initialize() {
     	Robot.drive.gyroReset();
     	System.out.println("autoTurn Start");
+    	Robot.commandInitialized(this);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -64,11 +65,13 @@ public class  AutonomousTurn extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.commandEnded(this);
     	Robot.drive.turnMotorsOff();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.commandInterrupted(this);
     }
 }

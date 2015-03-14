@@ -144,4 +144,8 @@ public class pneumatics extends Subsystem {
 		}
 
 	}
+	
+	public double getCompressorCurrent() {
+		return havePneumatics ? compressor1.getCompressorCurrent() : -42;
+	}
 }

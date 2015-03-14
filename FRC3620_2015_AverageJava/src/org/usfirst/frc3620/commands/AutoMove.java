@@ -23,7 +23,6 @@ public class  AutoMove extends Command {
 	public double howFar;
 	public double howFast;
     public AutoMove(double distance, double power) {
-    	System.out.println("hello");
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     		howFar = distance;
@@ -38,7 +37,6 @@ public class  AutoMove extends Command {
     protected void initialize() {
     	Robot.commandInitialized(this);
     	Robot.encoderSubsystem.resetEncoders();
-    	System.out.println("autoMove start");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -58,8 +56,6 @@ public class  AutoMove extends Command {
     protected boolean isFinished() {
     	if (Math.abs(Robot.encoderSubsystem.getLeftEncoder()) >= Math.abs(howFar))
     	{
-    		
-    		System.out.println("AutoMove End");
     		return true;
     	}
     	else
@@ -70,8 +66,8 @@ public class  AutoMove extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.drive.turnMotorsOff();
     	Robot.commandEnded(this);
+    	Robot.drive.turnMotorsOff();
     }
 
     // Called when another command which requires one or more of the same

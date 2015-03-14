@@ -33,6 +33,9 @@ import edu.wpi.first.wpilibj.command.WaitCommand;
 public class autonomous extends CommandGroup {
     
     public  autonomous() {
+    	
+    	
+    	
     	addSequential(new intakeClose());  //Squeeze
     	addSequential(new WaitCommand(.5));
     	addSequential(new autoLiftTo(15)); //Up
@@ -43,7 +46,7 @@ public class autonomous extends CommandGroup {
     	//addSequential(new autoLiftTo(0));
     	//addSequential(new intakeClose()); //squeeze
     	//addSequential(new autoLiftTo(2.5)); //up
-    	addSequential(new AutonomousTurn(-75)); //Turn 90 degrees right
+    	addSequential(new AutonomousTurn(-75)); //Turn 90 degrees left
     	addSequential(new AutoMove(10, 1)); //forward
     	//addSequential(new autoLiftTo(0)); //drop
     	addSequential(new AutonomousTurn(75));
@@ -51,7 +54,6 @@ public class autonomous extends CommandGroup {
     	addSequential(new intakeOpen()); //release
     	addSequential(new autoLiftTo(10));
     	addSequential(new AutoMove(-.5, 1));
-    	
     	
         // Add Commands here:
         // e.g. addSequential(new Command1());

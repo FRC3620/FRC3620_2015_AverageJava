@@ -422,7 +422,7 @@ Children:
           validators: *id011
           value: '2'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 0.09817477042468103}
+          name: Distance Per Pulse, validators: null, value: 0.00409061543436171}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id012
           default: kRate

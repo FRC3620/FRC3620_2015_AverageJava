@@ -20,6 +20,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousBreakLandFill3 extends CommandGroup {
     
     public  AutonomousBreakLandFill3() {
+    	addSequential(new AutoLiftToNoWait(36));
+    	addSequential(new AutoMove(4.25, 1));
+    	addSequential(new AutonomousTurn(135));
+    	//addSequential(new AutonomousStrafe(1, 1.0));
+    	//addSequential(new AutoMove(1, 1));
+    	addSequential(new AutonomousTurn(-70));
+    	//addSequential(new AutonomousTurn(-45));
+    	addSequential(new AutoMove(2, 1));
+    	addSequential(new AutonomousTurn(45));
+    	//addSequential(new AutonomousTurn(-45));
+    	addSequential(new AutoMove(-1.0, 1.0));
+    	addSequential(new AutonomousTurn(-25));
+    	addSequential(new AutoMove(2, 1));
+    	addSequential(new AutonomousTurn(45));
+    	addSequential(new AutoMove(3.0, 1.0));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

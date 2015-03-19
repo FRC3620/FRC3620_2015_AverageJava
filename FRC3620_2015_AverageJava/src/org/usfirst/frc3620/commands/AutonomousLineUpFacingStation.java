@@ -17,9 +17,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutonomousBreakLandFill2 extends CommandGroup {
+public class AutonomousLineUpFacingStation extends CommandGroup {
     
-    public  AutonomousBreakLandFill2() {
+    public  AutonomousLineUpFacingStation() {
+    	addSequential(new intakeClose());	//close clamp around tote
+    	addSequential(new AutoMove(1.0, .5));	//move forward to knock container out of the way
+    	addSequential(new AutonomousTurn(-10));	//turn to line up with feeder
+    	addSequential(new AutoMove(1.0, 0.5), 3.0);//move up to feeder.
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

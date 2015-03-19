@@ -29,7 +29,7 @@ public class PreferencesNames {
     public static final String AUTONOMOUS_CHOICE_TOTE_AND_BIN = "Tote and bin";
     public static final String AUTONOMOUS_CHOICE_MOVE_ONLY = "Move Only";
     public static final String AUTONOMOUS_CHOICE_LAND_FILL_1 = "Land Fill 1";
-    public static final String AUTONOMOUS_CHOICE_LAND_FILL_2 = "Land Fill 2";
+    public static final String AUTONOMOUS_CHOICE_LINEUP_FACING_STATION = "line up facing station";
     public static final String AUTONOMOUS_CHOICE_LAND_FILL_3 = "Land Fill 3";
     public static final String AUTONOMOUS_CHOICE_LAND_FILL_4 = "Land Fill 4";
     public static final String AUTONOMOUS_CHOICE_LAND_FILL_5 = "Land Fill 5";
@@ -44,7 +44,7 @@ public class PreferencesNames {
         AUTONOMOUS_CHOICE_TOTE_AND_BIN,
         AUTONOMOUS_CHOICE_MOVE_ONLY,
         AUTONOMOUS_CHOICE_LAND_FILL_1,
-        AUTONOMOUS_CHOICE_LAND_FILL_2,
+        AUTONOMOUS_CHOICE_LINEUP_FACING_STATION,
         AUTONOMOUS_CHOICE_LAND_FILL_3,
         AUTONOMOUS_CHOICE_LAND_FILL_4,
         AUTONOMOUS_CHOICE_LAND_FILL_5,

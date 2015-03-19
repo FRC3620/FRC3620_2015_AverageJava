@@ -209,9 +209,9 @@ public class Robot extends IterativeRobot {
 		{
 			autonomousCommand = new AutonomousBreakLandFill1();
 		}
-		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_LAND_FILL_2))
+		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_LINEUP_FACING_STATION))
 		{
-			autonomousCommand = new AutonomousBreakLandFill2();
+			autonomousCommand = new AutonomousLineUpFacingStation();
 		}
 		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_LAND_FILL_3))
 		{
@@ -319,13 +319,16 @@ public class Robot extends IterativeRobot {
 	{
 		if (dataLogger.shouldLogData())
 		{
+			// fololowing two lijnes added 3/17/2015 DEW
+			dataLogger.addDataItem("robotMode", currentRobotMode.toString());
+			dataLogger.addDataItem("robotModeInt", currentRobotMode.ordinal());
 			
-			dataLogger.addDataItem("Right drive current", pdp.getCurrent(1));
-			dataLogger.addDataItem("Right drive motor power", RobotMap.driveSpeedController3.get());
-			dataLogger.addDataItem("Left drive current", pdp.getCurrent(14));
-			dataLogger.addDataItem("left drive motor power", RobotMap.driveSpeedController2.get());
-			dataLogger.addDataItem("Lift motor current", pdp.getCurrent(15));
-			dataLogger.addDataItem("compressor current", pneumatics.getCompressorCurrent());
+			dataLogger.addDataItem("rightDriveCurrent", pdp.getCurrent(1));
+			dataLogger.addDataItem("rightDriveMotorPower", RobotMap.driveSpeedController3.get());
+			dataLogger.addDataItem("leftDriveCurrent", pdp.getCurrent(14));
+			dataLogger.addDataItem("leftDriveMotorPower", RobotMap.driveSpeedController2.get());
+			dataLogger.addDataItem("liftMotorCurrent", pdp.getCurrent(15));
+			dataLogger.addDataItem("compressorCurrent", pneumatics.getCompressorCurrent());
 			dataLogger.saveDataItems();
 		}
 		drive.getGyroAngle();

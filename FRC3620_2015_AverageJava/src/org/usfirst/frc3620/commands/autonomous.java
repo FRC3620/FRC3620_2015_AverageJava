@@ -38,7 +38,7 @@ public class autonomous extends CommandGroup {
     	
     	addSequential(new intakeClose());  //Squeeze
     	addSequential(new WaitCommand(.5));
-    	addSequential(new autoLiftTo(15)); //Up
+    	addSequential(new autoLiftTo(17)); //Up
     	addSequential(new AutoMove(1.4, 0.6)); //Forward
     	addSequential(new AutoLiftToNoWait(8));  //down just a little
     	addSequential(new WaitCommand(.5));

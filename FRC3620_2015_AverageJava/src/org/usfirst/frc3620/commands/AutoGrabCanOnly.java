@@ -15,9 +15,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutonomousBreakLandFill extends CommandGroup {
+public class AutoGrabCanOnly extends CommandGroup {
     
-    public  AutonomousBreakLandFill() {
+    public  AutoGrabCanOnly() {
+    	addSequential(new intakeClose());
+    	addSequential(new AutoLiftToNoWait(1));
+    	addSequential(new AutoMove(-3, -1));
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

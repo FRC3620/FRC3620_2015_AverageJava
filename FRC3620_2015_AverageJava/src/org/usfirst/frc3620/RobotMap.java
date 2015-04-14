@@ -46,6 +46,8 @@ public class RobotMap {
     public static Solenoid pneumaticscanGrabSolenoid;
     public static SpeedController intakeIntakeMotor2;
     public static SpeedController intakeIntakeMotor1;
+    public static SpeedController intakeBottomIntakeMotor1;
+    public static SpeedController intakeBottomIntakeMotor2;
     public static Encoder encoderSubsystemleftEncoder;
     public static Encoder encoderSubsystemrightEncoder;
 
@@ -121,6 +123,12 @@ public class RobotMap {
         
         intakeIntakeMotor1 = new Talon(6);
         LiveWindow.addActuator("Intake", "IntakeMotor1", (Talon) intakeIntakeMotor1);
+        
+        intakeBottomIntakeMotor1 = new Talon(8);
+        LiveWindow.addActuator("Intake", "Bottom Intake Motor 1", (Talon) intakeBottomIntakeMotor1);
+        
+        intakeBottomIntakeMotor2 = new Talon(9);
+        LiveWindow.addActuator("Intake", "Bottom Intake Motor 2", (Talon) intakeBottomIntakeMotor2);
         
         encoderSubsystemleftEncoder = new Encoder(2, 3, true, EncodingType.k4X);
         LiveWindow.addSensor("encoderSubsystem", "leftEncoder", encoderSubsystemleftEncoder);

@@ -209,10 +209,7 @@ public class Robot extends IterativeRobot {
 		{
 			autonomousCommand = new AutonomousBreakLandFill1();
 		}
-		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_LINEUP_FACING_STATION))
-		{
-			autonomousCommand = new AutonomousLineUpFacingStation();
-		}
+		
 		else if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_LAND_FILL_3))
 		{
 			autonomousCommand = new AutonomousBreakLandFill3();

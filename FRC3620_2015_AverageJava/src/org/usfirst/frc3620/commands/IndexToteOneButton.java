@@ -10,6 +10,7 @@
 
 
 package org.usfirst.frc3620.commands;
+import org.usfirst.frc3620.PreferencesNames;
 import org.usfirst.frc3620.Robot;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -22,11 +23,11 @@ public class IndexToteOneButton extends CommandGroup {
     public  IndexToteOneButton() {
         // Add Commands here:
     	
-    		addSequential(new autoLiftTo(8.5));
+    		addSequential(new autoLiftTo(Robot.preferences.getDouble(PreferencesNames.LIFT_MIDDLE_POSITION, 8.5)));
     		addSequential(new intakeOpen());
-    		addSequential(new autoLiftTo(0));
+    		addSequential(new autoLiftTo(Robot.preferences.getDouble(PreferencesNames.LIFT_BOTTOM_POSITION, 0.0)));
     		addSequential(new intakeClose());
-    		addSequential(new autoLiftTo(11));
+    		addSequential(new autoLiftTo(Robot.preferences.getDouble(PreferencesNames.LIFT_TOP_POSITION, 11)));
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

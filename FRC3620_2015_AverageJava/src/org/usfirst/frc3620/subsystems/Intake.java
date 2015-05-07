@@ -44,6 +44,7 @@ public class Intake extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
     public void takeIn()
     {
     	intakeMotor1.set(-0.5);
@@ -62,13 +63,13 @@ public class Intake extends Subsystem {
     
     public void bottomTakeIn()
     {
-    	bottomIntakeMotor1.set(-0.5);
+    	bottomIntakeMotor1.set(0.5);
     	bottomIntakeMotor2.set(-0.5);
     }
     
     public void bottomDumpToteOut()
     {
-    	bottomIntakeMotor1.set(0.5);
+    	bottomIntakeMotor1.set(-0.5);
     	bottomIntakeMotor2.set(0.5);
     }
     
@@ -76,6 +77,19 @@ public class Intake extends Subsystem {
     {
     	bottomIntakeMotor1.set(0);
     	bottomIntakeMotor2.set(0);
+    }
+    
+    public void bottomIntakeRight()
+    {
+   		bottomIntakeMotor1.set(.5);
+   		bottomIntakeMotor2.set(.5);
+    	
+    }
+    
+    public void bottomIntakeLeft()
+    {
+    	bottomIntakeMotor1.set(-.5);
+    	bottomIntakeMotor2.set(-.5);
     }
     
     public void AllIntakeStop()

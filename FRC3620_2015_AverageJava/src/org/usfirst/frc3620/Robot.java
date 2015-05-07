@@ -196,7 +196,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void autonomousInit()
 	{
-		String witchAutonomous = Robot.preferences.getString(PreferencesNames.AUTONOMOUS_CHOICE, PreferencesNames.AUTONOMOUS_CHOICE_TOTE_AND_BIN);
+		String witchAutonomous = Robot.preferences.getString(PreferencesNames.AUTONOMOUS_CHOICE, "sarned if I know, dabnabbit");
 		if(witchAutonomous.equals(PreferencesNames.AUTONOMOUS_CHOICE_TOTE_AND_BIN)){
 			autonomousCommand = new autonomous(); // tote and bin auto
 		}
@@ -226,11 +226,12 @@ public class Robot extends IterativeRobot {
 		{
 			autonomousCommand = new AutonomousDoNothing();//does nothing
 		}
+		//autonomousCommand = new AutonomousDoNothing();
 		allInit(RobotMode.AUTONOMOUS);
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
 			autonomousCommand.start();
-		logger.info("Using autonomous {} (prefs were {} )", autonomousCommand, witchAutonomous);
+		logger.info("Using autonomous {} from '{}' (prefs said '{}' )", autonomousCommand, PreferencesNames.AUTONOMOUS_CHOICE, witchAutonomous);
 	}
 
 	/**
@@ -251,6 +252,7 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		Robot.pneumatics.openCanArms();
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
 		

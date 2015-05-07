@@ -56,6 +56,8 @@ public class OI {
     public JoystickButton bottomWheelsOut;
     public JoystickButton toggleGyroAssist;
     public Joystick driverJoystick;
+    public JoystickButton bottomIntakeSpinRight;
+    public JoystickButton bottomIntakeSpinLeft;
     public JoystickButton stopAutoIndex;
     public JoystickButton indexToteButton;
     public JoystickButton pneumaticsbutton;
@@ -86,6 +88,10 @@ public class OI {
         indexToteButton.whenPressed(new IndexToteOneButton());
         stopAutoIndex = new JoystickButton(operatorJoystick, 1);
         stopAutoIndex.whenPressed(new StopAutoIndexCmd());
+        bottomIntakeSpinLeft = new JoystickButton(operatorJoystick, 5);
+        bottomIntakeSpinLeft.whileHeld(new bothBottomLeft());
+        bottomIntakeSpinRight = new JoystickButton(operatorJoystick, 6);
+        bottomIntakeSpinRight.whileHeld(new bothBottomRight());
         driverJoystick = new Joystick(0);
         
         toggleGyroAssist = new JoystickButton(driverJoystick, 8);
@@ -97,6 +103,14 @@ public class OI {
 
 	    
         // SmartDashboard Buttons
+        SmartDashboard.putData("openTopArms", new openTopArms());
+
+        SmartDashboard.putData("bothBottomLeft", new bothBottomLeft());
+
+        SmartDashboard.putData("driveAndLiftlandFillBreakUp", new driveAndLiftlandFillBreakUp());
+
+        SmartDashboard.putData("bothBottomRight", new bothBottomRight());
+
         SmartDashboard.putData("GitTestCommandAgain", new GitTestCommandAgain());
 
         SmartDashboard.putData("liftManual", new liftManual());

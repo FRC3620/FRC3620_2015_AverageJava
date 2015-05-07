@@ -43,7 +43,8 @@ public class RobotMap {
     public static Solenoid pneumaticsvalveArm1_2;
     public static Solenoid pneumaticsvalveArm2_2;
     public static Compressor pneumaticsCompressor1;
-    public static Solenoid pneumaticscanGrabSolenoid;
+    public static Solenoid pneumaticscanGrabSolenoid1;
+    public static Solenoid pneumaticscanGrabSolenoid2;
     public static SpeedController intakeIntakeMotor2;
     public static SpeedController intakeIntakeMotor1;
     public static SpeedController intakeBottomIntakeMotor1;
@@ -115,8 +116,11 @@ public class RobotMap {
         pneumaticsCompressor1 = new Compressor(0);
         
         
-        pneumaticscanGrabSolenoid = new Solenoid(0, 6);
-        LiveWindow.addActuator("pneumatics", "canGrabSolenoid", pneumaticscanGrabSolenoid);
+        pneumaticscanGrabSolenoid1 = new Solenoid(0, 6);
+        LiveWindow.addActuator("pneumatics", "canGrabSolenoid1", pneumaticscanGrabSolenoid1);
+        
+        pneumaticscanGrabSolenoid2 = new Solenoid(0, 7);
+        LiveWindow.addActuator("pneumatics", "canGrabSolenoid2", pneumaticscanGrabSolenoid2);
         
         intakeIntakeMotor2 = new Talon(5);
         LiveWindow.addActuator("Intake", "IntakeMotor2", (Talon) intakeIntakeMotor2);

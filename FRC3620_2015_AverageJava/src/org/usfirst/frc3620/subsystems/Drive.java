@@ -85,10 +85,10 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     
     public void arcadeDrive(GenericHID hid)
     {
-    	 double move = getJoystickY(hid);
-         double  rX= getJoystickX(hid);
+    	 double move = getJoystickY(hid) * .5;
+         double  rX= getJoystickX(hid) * .5;
          
-    	double joystickStrafe = getJoystickStrafe(hid);
+    	/*double joystickStrafe = getJoystickStrafe(hid);
     	setStrafeMotor(joystickStrafe);
     	DesiredStrafeState desiredStrafeState = DesiredStrafeState.LEAVE_IT;
     	if(Math.abs(joystickStrafe) > 0.2)
@@ -112,7 +112,7 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
 		
 		default:
 			break;
-		}
+		}*/
     	
     	teleOpDriveAssist.setOutputRange(-.5, .5);
     	// robotDrive4.arcadeDrive(hid.getY(), hid.getX());

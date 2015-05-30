@@ -85,8 +85,8 @@ public class Drive extends Subsystem implements PIDSource, PIDOutput {
     
     public void arcadeDrive(GenericHID hid)
     {
-    	 double move = getJoystickY(hid) * .5;
-         double  rX= getJoystickX(hid) * .5;
+    	 double move = getJoystickY(hid) * .75;
+         double  rX= getJoystickX(hid) * .75;
          
     	/*double joystickStrafe = getJoystickStrafe(hid);
     	setStrafeMotor(joystickStrafe);
